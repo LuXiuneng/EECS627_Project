@@ -89,68 +89,68 @@ module fft_top(
 	butterfly_8 stage2_3 (
 		.clock(clock),
 		.reset(reset),
-		.in_1(stage1_out),
-		.in_2(stage1_out),
-		.weight_1(W_8_),
-		.weight_2(W_8_),
-		.out_1(stage2_out),
-		.out_2(stage2_out)
+		.in_1(stage1_out[4]),
+		.in_2(stage1_out[6]),
+		.weight_1(W_8_0),
+		.weight_2(W_8_0),
+		.out_1(stage2_out[4]),
+		.out_2(stage2_out[6])
 		);
 
 	butterfly_8 stage2_4 (
 		.clock(clock),
 		.reset(reset),
-		.in_1(stage1_out),
-		.in_2(stage1_out),
-		.weight_1(W_8_),
-		.weight_2(W_8_),
-		.out_1(stage2_out),
-		.out_2(stage2_out)
+		.in_1(stage1_out[5]),
+		.in_2(stage1_out[7]),
+		.weight_1(W_8_0),
+		.weight_2(W_8_2),
+		.out_1(stage2_out[5]),
+		.out_2(stage2_out[7])
 		);
 	
 	// stage 3
 	butterfly_8 stage3_1 (
 		.clock(clock),
 		.reset(reset),
-		.in_1(stage2_out),
-		.in_2(stage2_out),
-		.weight_1(W_8_),
-		.weight_2(W_8_),
-		.out_1(data_output),
-		.out_2(data_output)
+		.in_1(stage2_out[0]),
+		.in_2(stage2_out[1]),
+		.weight_1(W_8_0),
+		.weight_2(W_8_0),
+		.out_1(data_output[0]),
+		.out_2(data_output[4])
 		);
 
 	butterfly_8 stage3_2 (
 		.clock(clock),
 		.reset(reset),
-		.in_1(stage2_out),
-		.in_2(stage2_out),
-		.weight_1(W_8_),
-		.weight_2(W_8_),
-		.out_1(data_output),
-		.out_2(data_output)
+		.in_1(stage2_out[2]),
+		.in_2(stage2_out[3]),
+		.weight_1(W_8_0),
+		.weight_2(W_8_0),
+		.out_1(data_output[2]),
+		.out_2(data_output[6])
 		);
 
 	butterfly_8 stage3_3 (
 		.clock(clock),
 		.reset(reset),
-		.in_1(stage2_out),
-		.in_2(stage2_out),
-		.weight_1(W_8_),
-		.weight_2(W_8_),
-		.out_1(data_output),
-		.out_2(data_output)
+		.in_1(stage2_out[4]),
+		.in_2(stage2_out[5]),
+		.weight_1(W_8_0),
+		.weight_2(W_8_0),
+		.out_1(data_output[1]),
+		.out_2(data_output[5])
 		);
 
 	butterfly_8 stage3_4 (
 		.clock(clock),
 		.reset(reset),
-		.in_1(stage2_out),
-		.in_2(stage2_out),
-		.weight_1(W_8_),
-		.weight_2(W_8_),
-		.out_1(data_output),
-		.out_2(data_output)
+		.in_1(stage2_out[6]),
+		.in_2(stage2_out[7]),
+		.weight_1(W_8_0),
+		.weight_2(W_8_0),
+		.out_1(data_output[3]),
+		.out_2(data_output[7])
 		);
 	
 endmodule
