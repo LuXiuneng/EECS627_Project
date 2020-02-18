@@ -10,9 +10,9 @@
 // currently, computing a sigmiod would take 5 cycles
 module sigmoid (
 	input clock, reset,
-	input TANH_INPUT_PACKET packet_in,
+	input SIGMOID_INPUT_PACKET packet_in,
 
-	output TANH_OUTPUT_PACKET packet_out
+	output SIGMOID_OUTPUT_PACKET packet_out
 	);
 	// define intermedia
 	logic [2*`LSTM_INPUT_BITS-1:0]	x_square, x_result, x_square_result;
@@ -109,6 +109,7 @@ module sigmoid (
 	// sum all the result
 	next_result = coeff_const_delay_2 + x_result[23:8] + x_square_result[23:8];
 
+	//synopsys sync_set_reset "reset"
 	always_ff @(posedge clock) begin 
 		if (reset) begin
 			compare_flag 			<=	`SD 0;
