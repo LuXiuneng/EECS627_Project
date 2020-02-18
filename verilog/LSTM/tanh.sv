@@ -110,6 +110,7 @@ module tanh (
 	// sum all the result
 	next_result = coeff_const_delay_2 + x_result[23:8] + x_square_result[23:8];
 
+	//synopsys sync_set_reset "reset"
 	always_ff @(posedge clock) begin 
 		if (reset) begin
 			compare_flag 			<=	`SD 0;
