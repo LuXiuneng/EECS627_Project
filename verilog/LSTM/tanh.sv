@@ -8,6 +8,7 @@
 */
 
 // it takes 5 cycles to compute the tanh function
+`timescale 1ns/100ps
 module tanh (
 	input clock, reset,
 	input TANH_INPUT_PACKET packet_in,
@@ -23,7 +24,7 @@ module tanh (
 
 	// define the coefficient
 	logic [15:0] coeff_1, coeff_2, coeff_3, coeff_4, coeff_5, coeff_6, coeff_7, coeff_8, coeff_9, coeff_10, coeff_11, coeff_12;
-	logic [15:0] next_coeff_x, next_coeff_x_square, next_coeff_const, coeff_x, coeff_const, coeff_x_square, coeff_const_delay_1, coeff_const_delayed_2;
+	logic [15:0] next_coeff_x, next_coeff_x_square, next_coeff_const, coeff_x, coeff_const, coeff_x_square, coeff_const_delay_1, coeff_const_delay_2;
 	assign coeff_1 	= {8'hFF,8'b10011011}; //-0.39814608
 	assign coeff_2 	= {8'b0,8'b01110111}; //0.46527859
 	assign coeff_3 	= {8'b0,8'b00010111}; //0.09007576
@@ -81,13 +82,14 @@ module tanh (
 			next_coeff_x 		= coeff_2;
 			next_coeff_x_square = coeff_3;
 			next_coeff_const 	= coeff_1;
+		end
 		else begin
 			next_coeff_const 	= {8'b11111111,8'b0};
 			end
 	end
 
 	// compute the other term
-		mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) mult_square (
+		mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) mult_x_result (
 		.clock(clock),
 		.reset(reset),
 		.sign({2'b11}),
@@ -97,7 +99,7 @@ module tanh (
 		.done(x_done)
 		);
 
-		mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) mult_square (
+		mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) mult_x_square_result (
 		.clock(clock),
 		.reset(reset),
 		.sign({2'b11}),
@@ -108,7 +110,7 @@ module tanh (
 		);
 
 	// sum all the result
-	next_result = coeff_const_delay_2 + x_result[23:8] + x_square_result[23:8];
+	assign next_result = coeff_const_delay_2 + x_result[23:8] + x_square_result[23:8];
 
 	//synopsys sync_set_reset "reset"
 	always_ff @(posedge clock) begin 

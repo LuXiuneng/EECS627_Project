@@ -8,6 +8,7 @@
 */
 
 // currently, computing a sigmiod would take 5 cycles
+`timescale 1ns/100ps
 module sigmoid (
 	input clock, reset,
 	input SIGMOID_INPUT_PACKET packet_in,
@@ -22,7 +23,7 @@ module sigmoid (
 
 	// define the coefficient
 	logic [15:0] coeff_1, coeff_2, coeff_3, coeff_4, coeff_5, coeff_6, coeff_7, coeff_8, coeff_9, coeff_10, coeff_11, coeff_12;
-	logic [15:0] next_coeff_x, next_coeff_x_square, next_coeff_const, coeff_x, coeff_const, coeff_x_square, coeff_const_delay_1, coeff_const_delayed_2;
+	logic [15:0] next_coeff_x, next_coeff_x_square, next_coeff_const, coeff_x, coeff_const, coeff_x_square, coeff_const_delay_1, coeff_const_delay_2;
 	assign coeff_1 	= {8'b0,8'b00110100}; //0.20323428
 	assign coeff_2 	= {8'b0,8'b00010010}; //0.0717631
 	assign coeff_3 	= {8'b0,8'b00000001}; //0.00642858
@@ -80,13 +81,14 @@ module sigmoid (
 			next_coeff_x 		= coeff_2;
 			next_coeff_x_square = coeff_3;
 			next_coeff_const 	= coeff_1;
+		end
 		else begin
 			
 			end
 	end
 
 	// compute the other term
-		mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) mult_square (
+		mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) mult_x_result (
 		.clock(clock),
 		.reset(reset),
 		.sign({2'b11}),
@@ -96,7 +98,7 @@ module sigmoid (
 		.done(x_done)
 		);
 
-		mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) mult_square (
+		mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) mult_x_square_result (
 		.clock(clock),
 		.reset(reset),
 		.sign({2'b11}),
@@ -107,7 +109,7 @@ module sigmoid (
 		);
 
 	// sum all the result
-	next_result = coeff_const_delay_2 + x_result[23:8] + x_square_result[23:8];
+	assign next_result = coeff_const_delay_2 + x_result[23:8] + x_square_result[23:8];
 
 	//synopsys sync_set_reset "reset"
 	always_ff @(posedge clock) begin 

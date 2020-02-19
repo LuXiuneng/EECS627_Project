@@ -1,3 +1,4 @@
+`timescale 1ns/100ps
 module mult #(parameter XLEN = 32, parameter NUM_STAGE = 4) (
 				input clock, reset,
 				input start,

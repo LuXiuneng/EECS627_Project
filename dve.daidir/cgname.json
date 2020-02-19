@@ -1,0 +1,44 @@
+{
+    "_vcs_unit__2561504331": [
+        "_vcs_unit__2561504331",
+        "d4Mfd",
+        "module",
+        1
+    ],
+    "std": [
+        "std",
+        "reYIK",
+        "module",
+        2
+    ],
+    "testbench": [
+        "testbench",
+        "iAVhC",
+        "module",
+        3
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        8
+    ],
+    "tanh": [
+        "tanh",
+        "RPdBp",
+        "module",
+        6
+    ],
+    "lstm_compute": [
+        "lstm_compute",
+        "ghDqH",
+        "module",
+        4
+    ],
+    "sigmoid": [
+        "sigmoid",
+        "bYzLi",
+        "module",
+        5
+    ]
+}

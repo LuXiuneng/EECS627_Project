@@ -1,13 +1,14 @@
+`timescale 1ns/100ps
 module delay_chain 
 	#(
-		parameter INPUT_BITS_NUM,
-		parameter NUM_DELAY_CYCLE
+		parameter INPUT_BITS_NUM=16,
+		parameter NUM_DELAY_CYCLE=4
 		)
 	(
 	input clock, reset,
 	input [INPUT_BITS_NUM-1:0] data_in,
 
-	output [INPUT_BITS_NUM-1:0] data_out
+	output logic [INPUT_BITS_NUM-1:0] data_out
 	);
 	logic [(NUM_DELAY_CYCLE-1)*INPUT_BITS_NUM-1:0] internal_wire;
 
@@ -20,12 +21,12 @@ module delay_chain
 
 endmodule
 
-module dff #(parameter INPUT_BITS_NUM)
+module dff #(parameter INPUT_BITS_NUM=16)
 	(
 	input clock, reset,
 	input [INPUT_BITS_NUM-1:0] data_in,
 
-	output [INPUT_BITS_NUM-1:0] data_out
+	output logic [INPUT_BITS_NUM-1:0] data_out
 	);
 
 	//synopsys sync_set_reset "reset"

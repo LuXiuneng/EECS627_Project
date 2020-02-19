@@ -1,7 +1,9 @@
+
+`timescale 1ns/100ps
 module lstm_compute (
 	input clock, reset,
-	input CMVU_COMPUTE_PACKET [3:0] cmvu_compute_packet_in,
 	input CRAM_COMPUTE_PACKET  		cram_compute_packet_in,
+	input CMVU_COMPUTE_PACKET [3:0] cmvu_compute_packet_in,
 
 	output COMPUTE_OUTPUT_PACKET 	compute_packet_out,
 	output COMPUTE_CRAM_PACKET 		compute_cram_packet_out
@@ -53,7 +55,7 @@ module lstm_compute (
 		.done(upper_product_done)
 		);
 
-	mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) top_mult(
+	mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) bottem_mult(
 		.clock(clock),
 		.reset(reset),
 		.sign({2'b11}),
@@ -67,8 +69,8 @@ module lstm_compute (
 	assign compute_cram_packet_out.data = sum_product;
 
 //	next, compute tanh function for sum_product
-	tanh c_wav_t_tanh (
-		.clock(clock),
+	tanh final_tanh (
+		.clock(clock), 
 		.reset(reset),
 		.packet_in(sum_product),
 		.packet_out(tanh_sum_product)
@@ -82,7 +84,7 @@ module lstm_compute (
 		.data_out(o_t_delayed)
 		);
 
-	mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) top_mult(
+	mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) final_mult(
 		.clock(clock),
 		.reset(reset),
 		.sign({2'b11}),

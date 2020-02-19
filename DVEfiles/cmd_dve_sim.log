@@ -1,0 +1,40 @@
+set ucliGUI::state
+set ucliGUI::state
+ucliCore::getToolPID
+synopsys::env hasTB
+trigger_hier_stack_context_switch 0
+synUtils::setDVEInitPhase 1
+synopsys::dump -type VPD -file /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/inter.vpd -locking
+synopsys::dump -autoflush on -fid VPD0
+set ::dve_fid VPD0
+synUtils::setDVEInitPhase 0
+ucliCore::getToolPID
+synUtils::sendTool -active _icl_setToolSocket /tmp/smlnpJ6IWWN
+synUtils::sendTool -active {_icl_start_rpc -version "N-2017.12-SP2-1_Full64" -sync_file /tmp/vcs_dve_rpc.xiuneng.20189}
+synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.xiuneng.20189}
+ucliGUI::getSignalValues -scope testbench -radix {binary binary hexadecimal hexadecimal } -list {clock reset {data_in[16:0]} {data_out[16:0]} }
+config endofsim noexit
+config onfail enable all
+config syscaddplainmembers
+config syscaddsourcenames
+config syscaddstructtypes
+synopsys::listing -disable
+synopsys::dump -add {testbench.clock testbench.data_in testbench.data_out testbench.reset } -aggregates  -fid VPD0
+synopsys::dump -add {testbench.DUT.clock testbench.DUT.data_in testbench.DUT.data_out testbench.DUT.internal_wire testbench.DUT.reset } -aggregates  -fid VPD0
+synopsys::dump -add {{testbench.DUT.dff_chain[3]}} -scope "." -depth 1 -fid VPD0
+synopsys::dump -add {{testbench.DUT.dff_chain[2]}} -scope "." -depth 1 -fid VPD0
+synopsys::dump -add {_vcs_unit__2561504331} -aggregates  -fid VPD0
+synopsys::dump -add {{testbench.DUT.dff_chain[1]}} -scope "." -depth 1 -fid VPD0
+synopsys::dump -add {{testbench.DUT.dff_chain[0]}} -scope "." -depth 1 -fid VPD0
+synopsys::run
+set ucliGUI::state
+set ucliGUI::state
+set ucliGUI::state
+set ucliGUI::state
+ucliGUI::vpdAddHierarchy -scope _vcs_unit__2561504331 -depth 2 -file /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/inter.vpd; synopsys::dump -flush VPD0
+ucliGUI::vpdAddHierarchy -scope _vcs_unit__2561504331 -depth 3 -file /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/inter.vpd; synopsys::dump -flush VPD0
+if [catch {gui_sim_terminate}] {gui_sim_terminate -kill}
+synopsys::finish
+set ucliGUI::state
+set ucliGUI::state
+ucli_exit

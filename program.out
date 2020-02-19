@@ -1,0 +1,10 @@
+Chronologic VCS simulator copyright 1991-2017
+Contains Synopsys proprietary information.
+Compiler version N-2017.12-SP2-1_Full64; Runtime version N-2017.12-SP2-1_Full64;  Feb 19 01:03 2020
+@@@ passed
+$finish called from file "verilog/testbench/delay_chain_test.v", line 39.
+$finish at simulation time                50000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 5000000 ps
+CPU Time:      0.260 seconds;       Data structure size:   0.0Mb
+Wed Feb 19 01:03:47 2020
