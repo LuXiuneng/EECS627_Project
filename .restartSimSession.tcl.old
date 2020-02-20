@@ -1,15 +1,15 @@
 # Begin_DVE_Session_Save_Info
 # DVE restart session
-# Saved on Wed Feb 19 00:52:25 2020
+# Saved on Wed Feb 19 21:31:32 2020
 # Designs open: 1
 #   Sim: /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/dve
 # Toplevel windows open: 2
 # 	TopLevel.1
 # 	TopLevel.2
 #   Source.1: _vcs_unit__2561504331
-#   Wave.1: 27 signals
-#   Group count = 5
-#   Group Group1 signal count = 9
+#   Wave.1: 7 signals
+#   Group count = 1
+#   Group Group1 signal count = 7
 # End_DVE_Session_Save_Info
 
 # DVE version: N-2017.12-SP2-1_Full64
@@ -86,59 +86,13 @@ gui_set_time_units 100ps
 # Global: Signal Compare
 
 # Global: Signal Groups
-gui_load_child_values {testbench.DUT.dff_chain[1]}
-gui_load_child_values {testbench.DUT.dff_chain[3]}
-gui_load_child_values {testbench.DUT.dff_chain[0]}
-gui_load_child_values {testbench.DUT.dff_chain[2]}
 
 
-set _session_group_6 Group1
-gui_sg_create "$_session_group_6"
-set Group1 "$_session_group_6"
+set _session_group_3 Group1
+gui_sg_create "$_session_group_3"
+set Group1 "$_session_group_3"
 
-gui_sg_addsignal -group "$_session_group_6" { testbench.DUT.clock testbench.DUT.reset testbench.DUT.data_in testbench.DUT.data_out testbench.DUT.internal_wire }
-
-set _session_group_7 $_session_group_6|
-append _session_group_7 {dff_chain[3]}
-gui_sg_create "$_session_group_7"
-set {Group1|dff_chain[3]} "$_session_group_7"
-
-gui_sg_addsignal -group "$_session_group_7" { {testbench.DUT.dff_chain[3].clock} {testbench.DUT.dff_chain[3].reset} {testbench.DUT.dff_chain[3].data_in} {testbench.DUT.dff_chain[3].data_out} {testbench.DUT.dff_chain[3].INPUT_BITS_NUM} {testbench.DUT.dff_chain[3].$unit} }
-gui_set_radix -radix {decimal} -signals {{Sim:testbench.DUT.dff_chain[3].INPUT_BITS_NUM}}
-gui_set_radix -radix {twosComplement} -signals {{Sim:testbench.DUT.dff_chain[3].INPUT_BITS_NUM}}
-
-gui_sg_move "$_session_group_7" -after "$_session_group_6" -pos 3 
-
-set _session_group_8 $_session_group_6|
-append _session_group_8 {dff_chain[2]}
-gui_sg_create "$_session_group_8"
-set {Group1|dff_chain[2]} "$_session_group_8"
-
-gui_sg_addsignal -group "$_session_group_8" { {testbench.DUT.dff_chain[2].clock} {testbench.DUT.dff_chain[2].INPUT_BITS_NUM} {testbench.DUT.dff_chain[2].reset} {testbench.DUT.dff_chain[2].data_out} {testbench.DUT.dff_chain[2].data_in} }
-gui_set_radix -radix {decimal} -signals {{Sim:testbench.DUT.dff_chain[2].INPUT_BITS_NUM}}
-gui_set_radix -radix {twosComplement} -signals {{Sim:testbench.DUT.dff_chain[2].INPUT_BITS_NUM}}
-
-gui_sg_move "$_session_group_8" -after "$_session_group_6" -pos 2 
-
-set _session_group_9 $_session_group_6|
-append _session_group_9 {dff_chain[1]}
-gui_sg_create "$_session_group_9"
-set {Group1|dff_chain[1]} "$_session_group_9"
-
-gui_sg_addsignal -group "$_session_group_9" { {testbench.DUT.dff_chain[1].clock} {testbench.DUT.dff_chain[1].reset} {testbench.DUT.dff_chain[1].data_in} {testbench.DUT.dff_chain[1].data_out} {testbench.DUT.dff_chain[1].INPUT_BITS_NUM} {testbench.DUT.dff_chain[1].$unit} }
-gui_set_radix -radix {decimal} -signals {{Sim:testbench.DUT.dff_chain[1].INPUT_BITS_NUM}}
-gui_set_radix -radix {twosComplement} -signals {{Sim:testbench.DUT.dff_chain[1].INPUT_BITS_NUM}}
-
-gui_sg_move "$_session_group_9" -after "$_session_group_6" -pos 1 
-
-set _session_group_10 $_session_group_6|
-append _session_group_10 {dff_chain[0]}
-gui_sg_create "$_session_group_10"
-set {Group1|dff_chain[0]} "$_session_group_10"
-
-gui_sg_addsignal -group "$_session_group_10" { {testbench.DUT.dff_chain[0].clock} {testbench.DUT.dff_chain[0].INPUT_BITS_NUM} {testbench.DUT.dff_chain[0].reset} {testbench.DUT.dff_chain[0].data_out} {testbench.DUT.dff_chain[0].data_in} }
-gui_set_radix -radix {decimal} -signals {{Sim:testbench.DUT.dff_chain[0].INPUT_BITS_NUM}}
-gui_set_radix -radix {twosComplement} -signals {{Sim:testbench.DUT.dff_chain[0].INPUT_BITS_NUM}}
+gui_sg_addsignal -group "$_session_group_3" { testbench.DUT.next_coeff_x testbench.DUT.next_coeff_x_square testbench.DUT.next_coeff_const testbench.DUT.packet_in testbench.DUT.packet_out testbench.DUT.clock testbench.DUT.reset }
 
 # Global: Highlighting
 
@@ -177,7 +131,7 @@ gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linka
 gui_list_set_filter -id ${Data.1} -text {*}
 gui_list_show_data -id ${Data.1} {testbench.DUT}
 gui_show_window -window ${Data.1}
-catch { gui_list_select -id ${Data.1} {testbench.DUT.internal_wire }}
+catch { gui_list_select -id ${Data.1} {testbench.DUT.clock testbench.DUT.reset }}
 gui_view_scroll -id ${Data.1} -vertical -set 0
 gui_view_scroll -id ${Data.1} -horizontal -set 0
 gui_view_scroll -id ${Hier.1} -vertical -set 0
@@ -200,13 +154,8 @@ set origWaveHeight [gui_get_pref_value -category Wave -key waveRowHeight]
 gui_list_set_height -id Wave -height 25
 set origGroupCreationState [gui_list_create_group_when_add -wave]
 gui_list_create_group_when_add -wave -disable
-gui_wv_zoom_timerange -id ${Wave.1} 0 597
+gui_wv_zoom_timerange -id ${Wave.1} 227 5004
 gui_list_add_group -id ${Wave.1} -after {New Group} {Group1}
-gui_list_add_group -id ${Wave.1}  -after Group1 {{Group1|dff_chain[0]}}
-gui_list_add_group -id ${Wave.1} -after {Group1|dff_chain[0]} {{Group1|dff_chain[1]}}
-gui_list_add_group -id ${Wave.1} -after {Group1|dff_chain[1]} {{Group1|dff_chain[2]}}
-gui_list_add_group -id ${Wave.1} -after {Group1|dff_chain[2]} {{Group1|dff_chain[3]}}
-gui_list_select -id ${Wave.1} {testbench.DUT.internal_wire }
 gui_seek_criteria -id ${Wave.1} {Any Edge}
 
 

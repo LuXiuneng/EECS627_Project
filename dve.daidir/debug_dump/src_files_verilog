@@ -4,4 +4,4 @@
 /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/verilog/LSTM/lstm_compute.sv
 /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/verilog/LSTM/sigmoid.sv
 /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/verilog/LSTM/tanh.sv
-/afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/verilog/testbench/delay_chain_test.v
+/afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/verilog/testbench/sigmoid_test.sv

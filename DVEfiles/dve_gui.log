@@ -1,17 +1,76 @@
 Chronologic VCS simulator copyright 1991-2017
 Contains Synopsys proprietary information.
-Compiler version N-2017.12-SP2-1_Full64; Runtime version N-2017.12-SP2-1_Full64;  Feb 19 00:54 2020
+Compiler version N-2017.12-SP2-1_Full64; Runtime version N-2017.12-SP2-1_Full64;  Feb 19 21:27 2020
 VCD+ Writer N-2017.12-SP2-1_Full64 Copyright (c) 1991-2017 by Synopsys Inc.
-The design has assertions or cover properties.
-The assertion browser can be used to view them. Click on the assertion toolbar button or use the menu 'Window->Panes->Assertion' to open it.
 The file '/afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/inter.vpd' was opened successfully.
-"verilog/testbench/delay_chain_test.v", 34: testbench.unnamed$$_0.unnamed$$_1: started at 50000ps failed at 50000ps
-	Offending '(data_out == data_in)'
-@@@Failed at time 52.000000
-$finish called from file "verilog/testbench/delay_chain_test.v", line 17.
-$finish at simulation time                  520
-Simulation complete, time is 52000 ps.
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 52000 ps
-CPU Time:      0.460 seconds;       Data structure size:   0.1Mb
-Wed Feb 19 01:01:15 2020
+packet_in:3524, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:5e81, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:d609, packet_out:0000
+verilog_output:1.000000, real_output:0.000000, error_percentage:inf
+packet_in:5663, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:7b0d, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+@@@ passed
+$finish called from file "verilog/testbench/sigmoid_test.sv", line 94.
+$finish at simulation time                 3000
+Simulation complete, time is 300000 ps.
+Chronologic VCS simulator copyright 1991-2017
+Contains Synopsys proprietary information.
+Compiler version N-2017.12-SP2-1_Full64; Runtime version N-2017.12-SP2-1_Full64;  Feb 19 21:29 2020
+VCD+ Writer N-2017.12-SP2-1_Full64 Copyright (c) 1991-2017 by Synopsys Inc.
+The file '/afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/inter.vpd' was opened successfully.
+packet_in:3524, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:5e81, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:d609, packet_out:0000
+verilog_output:1.000000, real_output:0.000000, error_percentage:inf
+packet_in:5663, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:7b0d, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+@@@ passed
+$finish called from file "verilog/testbench/sigmoid_test.sv", line 94.
+$finish at simulation time                 3000
+Simulation complete, time is 300000 ps.
+Chronologic VCS simulator copyright 1991-2017
+Contains Synopsys proprietary information.
+Compiler version N-2017.12-SP2-1_Full64; Runtime version N-2017.12-SP2-1_Full64;  Feb 19 21:30 2020
+VCD+ Writer N-2017.12-SP2-1_Full64 Copyright (c) 1991-2017 by Synopsys Inc.
+The file '/afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/inter.vpd' was opened successfully.
+packet_in:3524, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:5e81, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:d609, packet_out:0000
+verilog_output:1.000000, real_output:0.000000, error_percentage:inf
+packet_in:5663, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:7b0d, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+@@@ passed
+$finish called from file "verilog/testbench/sigmoid_test.sv", line 94.
+$finish at simulation time                 3000
+Simulation complete, time is 300000 ps.
+Chronologic VCS simulator copyright 1991-2017
+Contains Synopsys proprietary information.
+Compiler version N-2017.12-SP2-1_Full64; Runtime version N-2017.12-SP2-1_Full64;  Feb 19 21:31 2020
+VCD+ Writer N-2017.12-SP2-1_Full64 Copyright (c) 1991-2017 by Synopsys Inc.
+The file '/afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/inter.vpd' was opened successfully.
+packet_in:3524, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:5e81, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:d609, packet_out:0000
+verilog_output:1.000000, real_output:0.000000, error_percentage:inf
+packet_in:5663, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+packet_in:7b0d, packet_out:0100
+verilog_output:1.000000, real_output:1.000000, error_percentage:0.000000
+@@@ passed
+$finish called from file "verilog/testbench/sigmoid_test.sv", line 94.
+$finish at simulation time                 3000
+Simulation complete, time is 300000 ps.

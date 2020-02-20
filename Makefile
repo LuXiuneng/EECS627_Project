@@ -28,7 +28,7 @@ all:	simv
 
 #####
 HEADERS	=	$(wildcard verilog/LSTM/*.svh)
-TESTBENCH = $(wildcard verilog/testbench/delay_chain_test.v)
+TESTBENCH = $(wildcard verilog/testbench/sigmoid_test.sv)
 SIMFILES = $(wildcard verilog/LSTM/*.sv)
 SIMFILES += $(wildcard verilog/FFT/pipe_stage_mult.sv)
 #SYNFILES = Arbiter.vg

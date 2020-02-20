@@ -1,3 +1,4 @@
+ucliGUI::start /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/dve -ucligui +vc +define+ +memcbk
 set ucliGUI::state
 set ucliGUI::state
 ucliCore::getToolPID
@@ -5,36 +6,95 @@ synopsys::env hasTB
 trigger_hier_stack_context_switch 0
 synUtils::setDVEInitPhase 1
 synopsys::dump -type VPD -file /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/inter.vpd -locking
-synopsys::dump -autoflush on -fid VPD0
-set ::dve_fid VPD0
+synopsys::dump -autoflush on -fid VPD3
+set ::dve_fid VPD3
 synUtils::setDVEInitPhase 0
 ucliCore::getToolPID
-synUtils::sendTool -active _icl_setToolSocket /tmp/smlnpJ6IWWN
-synUtils::sendTool -active {_icl_start_rpc -version "N-2017.12-SP2-1_Full64" -sync_file /tmp/vcs_dve_rpc.xiuneng.20189}
-synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.xiuneng.20189}
-ucliGUI::getSignalValues -scope testbench -radix {binary binary hexadecimal hexadecimal } -list {clock reset {data_in[16:0]} {data_out[16:0]} }
+synUtils::sendTool -active _icl_setToolSocket /tmp/smlnpzbI7II
+synUtils::sendTool -active {_icl_start_rpc -version "N-2017.12-SP2-1_Full64" -sync_file /tmp/vcs_dve_rpc.xiuneng.25342}
+synUtils::sendTool -active {_icl_createSharedMemory /tmp/vcs_dve_general.xiuneng.25342}
 config endofsim noexit
 config onfail enable all
 config syscaddplainmembers
 config syscaddsourcenames
 config syscaddstructtypes
 synopsys::listing -disable
-synopsys::dump -add {testbench.clock testbench.data_in testbench.data_out testbench.reset } -aggregates  -fid VPD0
-synopsys::dump -add {testbench.DUT.clock testbench.DUT.data_in testbench.DUT.data_out testbench.DUT.internal_wire testbench.DUT.reset } -aggregates  -fid VPD0
-synopsys::dump -add {{testbench.DUT.dff_chain[3]}} -scope "." -depth 1 -fid VPD0
-synopsys::dump -add {{testbench.DUT.dff_chain[2]}} -scope "." -depth 1 -fid VPD0
-synopsys::dump -add {_vcs_unit__2561504331} -aggregates  -fid VPD0
-synopsys::dump -add {{testbench.DUT.dff_chain[1]}} -scope "." -depth 1 -fid VPD0
-synopsys::dump -add {{testbench.DUT.dff_chain[0]}} -scope "." -depth 1 -fid VPD0
+# Begin_DVE_Session_Save_Info
+# DVE restart session
+# Saved on Wed Feb 19 21:31:32 2020
+# Designs open: 1
+#   Sim: /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/dve
+# Toplevel windows open: 2
+# 	TopLevel.1
+# 	TopLevel.2
+#   Source.1: _vcs_unit__2561504331
+#   Wave.1: 7 signals
+#   Group count = 1
+#   Group Group1 signal count = 7
+# End_DVE_Session_Save_Info
+# DVE version: N-2017.12-SP2-1_Full64
+# DVE build date: Jul 14 2018 20:58:30
+#<Session mode="Restart" path=".restartSimSession.tcl" type="Debug">
+# Application preferences
+#<WindowLayout>
+# DVE top-level session
+# Create and position top-level window: TopLevel.1
+set TopLevel.1 TopLevel.1
+# Docked window settings
+set HSPane.1 HSPane.1
+set Hier.1 Hier.1
+set DLPane.1 DLPane.1
+set Data.1 Data.1
+set Console.1 Console.1
+# MDI window settings
+set Source.1 Source.1
+# End MDI window settings
+# Create and position top-level window: TopLevel.2
+set TopLevel.2 TopLevel.2
+# Docked window settings
+# MDI window settings
+set Wave.1 Wave.1
+# End MDI window settings
+#</WindowLayout>
+#<Database>
+#</Database>
+# DVE Global setting session:
+# Global: Breakpoints
+# Global: Bus
+# Global: Expressions
+# Global: Signal Time Shift
+# Global: Signal Compare
+# Global: Signal Groups
+set _session_group_3 Group1
+set Group1 "$_session_group_3"
+# Global: Highlighting
+# Global: Stack
+# Post database loading setting...
+# Save global setting...
+# Wave/List view global setting
+# Close all empty TopLevel windows
+foreach __top [gui_ekki_get_window_ids -type TopLevel] {     if { [llength [gui_ekki_get_window_ids -parent $__top]] == 0} {         gui_close_window -window $__top     } }
+# DVE View/pane content session:
+# Hier 'Hier.1'
+catch {gui_list_expand -id ${Hier.1} testbench}
+catch {gui_list_select -id ${Hier.1} {testbench.DUT}}
+# Data 'Data.1'
+catch { gui_list_select -id ${Data.1} {testbench.DUT.clock testbench.DUT.reset }}
+# Source 'Source.1'
+# View 'Wave.1'
+set groupExD [gui_get_pref_value -category Wave -key exclusiveSG]
+set origWaveHeight [gui_get_pref_value -category Wave -key waveRowHeight]
+set origGroupCreationState [gui_list_create_group_when_add -wave]
+synopsys::dump -add {testbench.DUT.clock testbench.DUT.next_coeff_const testbench.DUT.next_coeff_x testbench.DUT.next_coeff_x_square testbench.DUT.packet_in testbench.DUT.packet_out testbench.DUT.reset } -aggregates  -fid VPD3
+if {$origGroupCreationState} { 	gui_list_create_group_when_add -wave -enable }
+if { $groupExD } {  gui_msg_report -code DVWW028 }
+# Restore toplevel window zorder
+# The toplevel window could be closed if it has no view/pane
+if {[gui_exist_window -window ${TopLevel.1}]} { 	gui_set_active_window -window ${TopLevel.1} 	gui_set_active_window -window ${Source.1} 	gui_set_active_window -window ${DLPane.1} }
+if {[gui_exist_window -window ${TopLevel.2}]} { 	gui_set_active_window -window ${TopLevel.2} 	gui_set_active_window -window ${Wave.1} }
+#</Session>
 synopsys::run
 set ucliGUI::state
 set ucliGUI::state
 set ucliGUI::state
 set ucliGUI::state
-ucliGUI::vpdAddHierarchy -scope _vcs_unit__2561504331 -depth 2 -file /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/inter.vpd; synopsys::dump -flush VPD0
-ucliGUI::vpdAddHierarchy -scope _vcs_unit__2561504331 -depth 3 -file /afs/umich.edu/user/x/i/xiuneng/Desktop/eecs627/project/EECS627_Project/inter.vpd; synopsys::dump -flush VPD0
-if [catch {gui_sim_terminate}] {gui_sim_terminate -kill}
-synopsys::finish
-set ucliGUI::state
-set ucliGUI::state
-ucli_exit

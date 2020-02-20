@@ -17,17 +17,11 @@
         "module",
         2
     ],
-    "tanh": [
-        "tanh",
-        "RPdBp",
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
         "module",
-        6
-    ],
-    "testbench": [
-        "testbench",
-        "iAVhC",
-        "module",
-        3
+        8
     ],
     "lstm_compute": [
         "lstm_compute",
@@ -35,16 +29,22 @@
         "module",
         4
     ],
+    "testbench": [
+        "testbench",
+        "iAVhC",
+        "module",
+        3
+    ],
+    "tanh": [
+        "tanh",
+        "RPdBp",
+        "module",
+        6
+    ],
     "sigmoid": [
         "sigmoid",
         "bYzLi",
         "module",
         5
-    ],
-    "...MASTER...": [
-        "SIM",
-        "amcQw",
-        "module",
-        8
     ]
 }

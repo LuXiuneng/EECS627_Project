@@ -1,0 +1,10 @@
+=======================DVE Context and Call Stack=========================
+Command line: /usr/caen/vcs-2017.12-SP2-1/gui/dve/linux64/bin/dve.exe -full64 -ucliplatform=linux64 -toolargs "-ucligui -toolexe dve +vc +define+ +memcbk  -pid 24347" -toolin /tmp/vcs_20200220022749_24346_xiuneng..stdin -toolout /tmp/vcs_20200220022749_24346_xiuneng..stdout
+
+--- Stack trace follows:
+
+Received Signal 1 from: PID=13129 (UID=114198437)
+
+
+Process terminated by hangup.
+

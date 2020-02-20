@@ -9,20 +9,20 @@ gui_create_pref_key -category {schem_pin_hc} -key {textExtFont} -value_type {str
 gui_state_default_create -off -ini
 gui_set_state_value -category Globals -key recent_sessions -value {{gui_load_session -ignore_errors -file /afs/umich.edu/user/x/i/xiuneng/Desktop/470p4/group8f19/AAAAA_session.inter.vpd.tcl -ignore_errors} {gui_load_session -ignore_errors -file /afs/umich.edu/user/x/i/xiuneng/Desktop/470p4/group8f19/AAUL_session.inter.vpd.tcl -ignore_errors} {gui_load_session -ignore_errors -file /afs/umich.edu/user/x/i/xiuneng/Desktop/470p4/group8f19/AAUL_session.inter.vpd.tcl} {gui_load_session -ignore_errors -file /afs/umich.edu/user/x/i/xiuneng/Desktop/470p4/group8f19/AUL_session.inter.vpd.tcl -ignore_errors} {gui_load_session -ignore_errors -file /afs/umich.edu/user/x/i/xiuneng/Desktop/470p4/group8f19/AUL_session.inter.vpd.tcl}}
 gui_set_state_value -category Layout -key child_console_size_x -value 2559
-gui_set_state_value -category Layout -key child_console_size_y -value 129
+gui_set_state_value -category Layout -key child_console_size_y -value 128
 gui_set_state_value -category Layout -key child_data_coltype -value 198
 gui_set_state_value -category Layout -key child_data_colvalue -value 247
 gui_set_state_value -category Layout -key child_data_colvariable -value 288
-gui_set_state_value -category Layout -key child_data_size_x -value 504
-gui_set_state_value -category Layout -key child_data_size_y -value 1073
+gui_set_state_value -category Layout -key child_data_size_x -value 503
+gui_set_state_value -category Layout -key child_data_size_y -value 1074
 gui_set_state_value -category Layout -key child_driver_size_x -value 2287
 gui_set_state_value -category Layout -key child_driver_size_y -value 179
 gui_set_state_value -category Layout -key child_hier_col3 -value {-1}
 gui_set_state_value -category Layout -key child_hier_colhier -value 360
 gui_set_state_value -category Layout -key child_hier_colpd -value 0
 gui_set_state_value -category Layout -key child_hier_coltype -value 194
-gui_set_state_value -category Layout -key child_hier_size_x -value 504
-gui_set_state_value -category Layout -key child_hier_size_y -value 1073
+gui_set_state_value -category Layout -key child_hier_size_x -value 503
+gui_set_state_value -category Layout -key child_hier_size_y -value 1074
 gui_set_state_value -category Layout -key child_hier_sort_order -value 1
 gui_set_state_value -category Layout -key child_list_down -value 179
 gui_set_state_value -category Layout -key child_list_right -value 444
@@ -34,10 +34,10 @@ gui_set_state_value -category Layout -key child_schematic_size_y -value 841
 gui_set_state_value -category Layout -key child_source_docknewline -value false
 gui_set_state_value -category Layout -key child_source_pos_x -value {-2}
 gui_set_state_value -category Layout -key child_source_pos_y -value {-15}
-gui_set_state_value -category Layout -key child_source_size_x -value 1554
-gui_set_state_value -category Layout -key child_source_size_y -value 1068
+gui_set_state_value -category Layout -key child_source_size_x -value 1556
+gui_set_state_value -category Layout -key child_source_size_y -value 1069
 gui_set_state_value -category Layout -key child_wave_colname -value 369
-gui_set_state_value -category Layout -key child_wave_colvalue -value 370
+gui_set_state_value -category Layout -key child_wave_colvalue -value 369
 gui_set_state_value -category Layout -key child_wave_left -value 743
 gui_set_state_value -category Layout -key child_wave_right -value 1811
 gui_set_state_value -category Layout -key main_pos_x -value 1
@@ -84,38 +84,49 @@ gui_state_default_create -off
 
 # Begin command logging
 gui_sim_run Ucli -exe dve -args {-ucligui  +vc +define+ +memcbk} -dir .
-gui_list_select -id Data.1 -selected  { testbench.clock   }
-gui_list_select -id Data.1 -selected  { testbench.clock  testbench.reset  {testbench.data_in[16:0]}  {testbench.data_out[16:0]}   }
-gui_open_window Wave
-gui_list_add -id Wave.1 -from Data.1 { testbench.clock testbench.reset {testbench.data_in[16:0]} {testbench.data_out[16:0]} } -insertionbar
-gui_wv_zoom_timerange -id  Wave.1 0 597
 gui_list_expand -id  Hier.1   testbench
-gui_list_select -id Hier.1 -current_item_name testbench.DUT -current_item_type Scope  -selected  { testbench.DUT   }
-gui_list_select -id Hier.1 -current_item_name testbench -current_item_type Scope  -selected  { testbench   }
-gui_list_select -id Wave.1 -selected  { testbench.clock   }
-gui_list_select -id Wave.1 -selected  { testbench.clock  testbench.reset  {testbench.data_in[16:0]}  {testbench.data_out[16:0]}   }
-gui_list_select -id Wave.1 -selected  { {testbench.data_out[16:0]}   }
-gui_list_select -id Wave.1 -selected  { testbench.clock  testbench.reset  {testbench.data_in[16:0]}  {testbench.data_out[16:0]}   }
-gui_delete_selected -id  Wave.1
-gui_list_select -id Wave.1 -selected  { Group1   }
-gui_list_select -id Hier.1 -current_item_name testbench.DUT -current_item_type Scope  -selected  { testbench.DUT   }
-gui_list_select -id Data.1 -selected  { testbench.DUT.clock   }
-gui_list_select -id Data.1 -selected  { testbench.DUT.clock  testbench.DUT.reset  {testbench.DUT.data_in[15:0]}  {testbench.DUT.data_out[15:0]}  {testbench.DUT.internal_wire[47:0]}  {testbench.DUT.INPUT_BITS_NUM[31:0]}   }
-gui_list_select -id Data.1 -selected  { testbench.DUT.clock  testbench.DUT.reset  {testbench.DUT.data_in[15:0]}  {testbench.DUT.data_out[15:0]}  {testbench.DUT.INPUT_BITS_NUM[31:0]}   }
-gui_list_select -id Data.1 -selected  { testbench.DUT.clock  testbench.DUT.reset  {testbench.DUT.data_in[15:0]}  {testbench.DUT.data_out[15:0]}   }
-gui_list_select -id Data.1 -selected  { testbench.DUT.clock  testbench.DUT.reset  {testbench.DUT.data_in[15:0]}  {testbench.DUT.data_out[15:0]}  {testbench.DUT.internal_wire[47:0]}   }
-gui_list_add -id Wave.1 -from Data.1 { testbench.DUT.clock testbench.DUT.reset {testbench.DUT.data_in[15:0]} {testbench.DUT.data_out[15:0]} {testbench.DUT.internal_wire[47:0]} } -insertionbar
 gui_list_expand -id  Hier.1   testbench.DUT
-gui_list_select -id Hier.1 -current_item_name {testbench.DUT.dff_chain[3]} -current_item_type Scope  -selected  { {testbench.DUT.dff_chain[3]}   }
-gui_list_select -id Hier.1 -current_item_name {testbench.DUT.dff_chain[0]} -current_item_type Scope  -selected  { {testbench.DUT.dff_chain[3]}  {testbench.DUT.dff_chain[2]}  {testbench.DUT.dff_chain[1]}  {testbench.DUT.dff_chain[0]}   }
-gui_list_add -id Wave.1 -from Hier.1 { {testbench.DUT.dff_chain[3]} {testbench.DUT.dff_chain[2]} {testbench.DUT.dff_chain[1]} {testbench.DUT.dff_chain[0]} } -insertionbar
-gui_sim_continue  
-gui_list_select -id Wave.1 -selected  { {testbench.DUT.data_in[15:0]}   }
-gui_list_select -id Wave.1 -selected  { {testbench.DUT.data_out[15:0]}   }
-gui_marker_move -id  Wave.1 C1 100
-gui_marker_move -id  Wave.1 C1 150
-gui_marker_move -id  Wave.1 C1 251
-gui_marker_move -id  Wave.1 C1 350
-gui_wv_zoom_timerange -id  Wave.1 0 533
+gui_list_select -id Hier.1 -current_item_name testbench.DUT -current_item_type Scope  -selected  { testbench.DUT   }
+gui_list_select -id Data.1 -selected  { {testbench.DUT.next_coeff_x[15:0]}   }
+gui_list_select -id Data.1 -selected  { {testbench.DUT.next_coeff_x[15:0]}  {testbench.DUT.next_coeff_x_square[15:0]}  {testbench.DUT.next_coeff_const[15:0]}   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Data.1 { {testbench.DUT.next_coeff_x[15:0]} {testbench.DUT.next_coeff_x_square[15:0]} {testbench.DUT.next_coeff_const[15:0]} } -insertionbar
 gui_wv_zoom_timerange -id  Wave.1 0 597
-gui_close_window -window TopLevel.2
+gui_sim_continue  
+gui_wv_scroll_hslidermove -id  Wave.1 0
+gui_list_select -id Data.1 -selected  { testbench.DUT.packet_in   }
+gui_list_add -id Wave.1 -from Data.1 { testbench.DUT.packet_in } -insertionbar
+gui_sim_restart
+gui_set_pref_value -category {Source} -key {value_annotate} -value {false}
+gui_set_pref_value -category {Source} -key {value_annotate} -value {true}
+gui_sim_continue  
+gui_wv_scroll_hslidermove -id  Wave.1 4776
+gui_marker_move -id  Wave.1 C1 1729
+gui_wv_scroll_hslidermove -id  Wave.1 4078
+gui_list_select -id Data.1 -selected  { testbench.DUT.packet_out   }
+gui_list_add -id Wave.1 -from Data.1 { testbench.DUT.packet_out } -insertionbar
+gui_sim_restart
+gui_set_pref_value -category {Source} -key {value_annotate} -value {false}
+gui_set_pref_value -category {Source} -key {value_annotate} -value {true}
+gui_sim_continue  
+gui_wv_scroll_hslidermove -id  Wave.1 3791
+gui_marker_move -id  Wave.1 C1 1517
+gui_wv_scroll_hslidermove -id  Wave.1 3724
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 2
+gui_wv_scroll_hslidermove -id  Wave.1 85
+gui_list_select -id Data.1 -selected  { testbench.DUT.clock   }
+gui_list_select -id Data.1 -selected  { testbench.DUT.reset   }
+gui_list_select -id Data.1 -selected  { testbench.DUT.reset  testbench.DUT.clock   }
+gui_list_add -id Wave.1 -from Data.1 { testbench.DUT.clock testbench.DUT.reset } -insertionbar
+gui_marker_move -id  Wave.1 C1 987
+gui_sim_restart
+gui_set_pref_value -category {Source} -key {value_annotate} -value {false}
+gui_set_pref_value -category {Source} -key {value_annotate} -value {true}
+gui_sim_continue  
+gui_zoom -window Wave.1 -factor 0.5
+gui_marker_move -id  Wave.1 C1 1300
+gui_marker_move -id  Wave.1 C1 1350

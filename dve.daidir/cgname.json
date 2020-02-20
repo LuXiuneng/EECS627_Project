@@ -1,4 +1,10 @@
 {
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        8
+    ],
     "_vcs_unit__2561504331": [
         "_vcs_unit__2561504331",
         "d4Mfd",
@@ -17,17 +23,11 @@
         "module",
         3
     ],
-    "...MASTER...": [
-        "SIM",
-        "amcQw",
+    "sigmoid": [
+        "sigmoid",
+        "bYzLi",
         "module",
-        8
-    ],
-    "tanh": [
-        "tanh",
-        "RPdBp",
-        "module",
-        6
+        5
     ],
     "lstm_compute": [
         "lstm_compute",
@@ -35,10 +35,10 @@
         "module",
         4
     ],
-    "sigmoid": [
-        "sigmoid",
-        "bYzLi",
+    "tanh": [
+        "tanh",
+        "RPdBp",
         "module",
-        5
+        6
     ]
 }
