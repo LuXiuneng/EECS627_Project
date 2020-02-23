@@ -1,4 +1,4 @@
-module fft_top(
+module ifft_top(
 	input clock, reset,
 	input FFT_INPUT_PACKET [`NUM_FFT_POINT-1:0] 	data_input,
 
@@ -12,11 +12,11 @@ module fft_top(
 	assign W_8_0.real_part = {16'h0001,16'h0};
 	assign W_8_0.imag_part = 0;
 	assign W_8_1.real_part = {16'b0,16'b1011_0101_0000_0100};
-	assign W_8_1.imag_part = {16'hFFFF,16'b0100_1010_1111_1100};
+	assign W_8_1.imag_part = {16'b0,16'b1011_0101_0000_0100};
 	assign W_8_2.real_part = 0;
 	assign W_8_2.imag_part = 32'hFFFF0000;
 	assign W_8_3.real_part = {16'hFFFF,16'b0100_1010_1111_1100};
-	assign W_8_3.imag_part = {16'hFFFF,16'b0100_1010_1111_1100};
+	assign W_8_3.imag_part = {16'b0,16'b1011_0101_0000_0100};
 
 	// stage 1
 	butterfly_8 stage1_1 (
@@ -153,4 +153,10 @@ module fft_top(
 		.out_2(data_output[7])
 		);
 	
+	// shfift the result
+	always_comb begin
+		for (int i = 0; i < 8; i++) begin
+			data_output[i] = data_output[i]>>>3;
+		end
+	end
 endmodule
