@@ -11,7 +11,7 @@
 `timescale 1ns/100ps
 module sigmoid (
 	input clock, reset,
-	input SIGMOID_INPUT_PACKET packet_in,
+	input SIGMOID_INPUT_PACKET packet_in, // 16 bit number, 1 sigh bit + 8 integer bits + 7 decimal bits
 
 	output SIGMOID_OUTPUT_PACKET packet_out
 	);
@@ -19,22 +19,22 @@ module sigmoid (
 	logic [2*`LSTM_INPUT_BITS-1:0]	x_square, x_result, x_square_result;
 	logic xquare_done, x_done, xsquare_const_done;
 	logic [4:0] next_compare_flag, compare_flag;
-	logic [`LSTM_INPUT_BITS-1:0] next_result;
+	logic [`LSTM_OUTPUT_BITS-1:0] next_result;
 
 	// define the coefficient
 	logic [15:0] coeff_1, coeff_2, coeff_3, coeff_4, coeff_5, coeff_6, coeff_7, coeff_8, coeff_9, coeff_10, coeff_11, coeff_12;
 	logic [15:0] next_coeff_x, next_coeff_x_square, next_coeff_const, coeff_x, coeff_const, coeff_x_square, coeff_const_delay_1, coeff_const_delay_2;
-	assign coeff_1 	= {8'b0,8'b00110100}; //0.20323428
-	assign coeff_2 	= {8'b0,8'b00010010}; //0.0717631
-	assign coeff_3 	= {8'b0,8'b00000001}; //0.00642858
-	assign coeff_4 	= {8'b0,8'b10000000}; //0.50195831
-	assign coeff_5 	= {8'b0,8'b01000101}; //0.27269294
-	assign coeff_6 	= {8'b0,8'b00001010}; //0.04059181
-	assign coeff_7 	= {8'b0,8'b01111111}; //0.49805785
-	assign coeff_8 	= {8'b0,8'b01000101}; //0.27266221
-	assign coeff_9 	= {8'hFF,8'b11110110}; //-0.04058115
-	assign coeff_10 = {8'b0,8'b11001011}; //0.7967568
-	assign coeff_11 = {8'b0,8'b00010010}; //0.07175359
+	assign coeff_1 	= {9'b0,7'b0011010}; //0.20323428
+	assign coeff_2 	= {9'b0,7'b0001001}; //0.0717631
+	assign coeff_3 	= {9'b0,7'b0000000}; //0.00642858
+	assign coeff_4 	= {9'b0,7'b1000000}; //0.50195831
+	assign coeff_5 	= {9'b0,7'b0100010}; //0.27269294
+	assign coeff_6 	= {9'b0,7'b0000101}; //0.04059181
+	assign coeff_7 	= {9'b0,7'b0111111}; //0.49805785
+	assign coeff_8 	= {9'b0,7'b0100010}; //0.27266221
+	assign coeff_9 	= {9'hFF,7'b1111011}; //-0.04058115
+	assign coeff_10 = {9'b0,7'b1100101}; //0.7967568
+	assign coeff_11 = {9'b0,7'b0001001}; //0.07175359
 	assign coeff_12 = 16'hFFFF; //-0.00642671
 
 	// pre_compute x^2
@@ -109,7 +109,7 @@ module sigmoid (
 		);
 
 	// sum all the result
-	assign next_result = coeff_const_delay_2 + x_result[23:8] + x_square_result[23:8];
+	assign next_result = {coeff_const_delay_2 + x_result[23:8] + x_square_result[23:8]}[7:0];
 
 	//synopsys sync_set_reset "reset"
 	always_ff @(posedge clock) begin 

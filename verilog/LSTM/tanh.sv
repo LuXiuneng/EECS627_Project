@@ -20,23 +20,23 @@ module tanh (
 	logic [2*`LSTM_INPUT_BITS-1:0]	x_square, x_result, x_square_result;
 	logic xquare_done, x_done, xsquare_const_done;
 	logic [4:0] next_compare_flag, compare_flag;
-	logic [`LSTM_INPUT_BITS-1:0] next_result;
+	logic [`LSTM_OUTPUT_BITS-1:0] next_result;
 
 	// define the coefficient
 	logic [15:0] coeff_1, coeff_2, coeff_3, coeff_4, coeff_5, coeff_6, coeff_7, coeff_8, coeff_9, coeff_10, coeff_11, coeff_12;
 	logic [15:0] next_coeff_x, next_coeff_x_square, next_coeff_const, coeff_x, coeff_const, coeff_x_square, coeff_const_delay_1, coeff_const_delay_2;
-	assign coeff_1 	= {8'hFF,8'b10011011}; //-0.39814608
-	assign coeff_2 	= {8'b0,8'b01110111}; //0.46527859
-	assign coeff_3 	= {8'b0,8'b00010111}; //0.09007576
-	assign coeff_4 	= {8'b0,8'b00000000}; //0.0031444
-	assign coeff_5 	= {8'b00000001,8'b00010101}; //1.08381219
-	assign coeff_6 	= {8'b0,8'b01010000}; //0.31592922
-	assign coeff_7 	= {8'b0,8'b00000000}; //-0.00349517
-	assign coeff_8 	= {8'b00000001,8'b00010101}; //1.08538355
-	assign coeff_9 	= {8'hFF,8'b10101111}; //-0.31676793
-	assign coeff_10 = {8'b0,8'b01100110}; //0.39878032
-	assign coeff_11 = {8'b0,8'b01110111}; //0.46509003
-	assign coeff_12 = {8'hFF,8'b11101001}; //-0.09013554
+	assign coeff_1 	= {9'hFF,7'b1001101}; //-0.39814608
+	assign coeff_2 	= {9'b0,7'b0111011}; //0.46527859
+	assign coeff_3 	= {9'b0,7'b0001011}; //0.09007576
+	assign coeff_4 	= {9'b0,7'b0000000}; //0.0031444
+	assign coeff_5 	= {9'b00000001,7'b0001010}; //1.08381219
+	assign coeff_6 	= {9'b0,7'b0101000}; //0.31592922
+	assign coeff_7 	= {9'b0,7'b0000000}; //-0.00349517
+	assign coeff_8 	= {9'b00000001,7'b0001010}; //1.08538355
+	assign coeff_9 	= {9'hFF,7'b1010111}; //-0.31676793
+	assign coeff_10 = {9'b0,7'b0110011}; //0.39878032
+	assign coeff_11 = {9'b0,7'b0111011}; //0.46509003
+	assign coeff_12 = {9'hFF,7'b1110100}; //-0.09013554
 
 	// pre_compute x^2
 	mult #(.XLEN(`LSTM_INPUT_BITS), .NUM_STAGE(`NUM_LSTM_MULT_STAGE)) mult_square (
@@ -110,7 +110,7 @@ module tanh (
 		);
 
 	// sum all the result
-	assign next_result = coeff_const_delay_2 + x_result[23:8] + x_square_result[23:8];
+	assign next_result = {coeff_const_delay_2 + x_result[23:8] + x_square_result[23:8]}[7:0];
 
 	//synopsys sync_set_reset "reset"
 	always_ff @(posedge clock) begin 
